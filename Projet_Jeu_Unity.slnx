@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<Solution>
 <<<<<<< HEAD
 =======
@@ -5,3 +6,9 @@
 >>>>>>> 16411fb8dc4dc67bd74288dd17f1770496cad64c
   <Project Path="Assembly-CSharp.csproj" />
 </Solution>
+=======
+﻿<Solution>
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+</Solution>
+>>>>>>> origin/scene_level
