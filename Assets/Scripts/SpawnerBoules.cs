@@ -1,4 +1,3 @@
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class SpawnerBoules : MonoBehaviour
@@ -6,7 +5,6 @@ public class SpawnerBoules : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     [Header("Config SpawnerBoules")]
-
     public GameObject prefabBoules;
 
     // le temps entre chaque Spawn les ballss
@@ -29,22 +27,20 @@ public class SpawnerBoules : MonoBehaviour
         if (prefabBoules != null)
         {
             //calcul de la rdm Position 
-            float posXRdm = Random.Range(decalageMinX,decalageMaxX);
+            float posXRdm = Random.Range(decalageMinX, decalageMaxX);
             //Nouvelle position du Spawner
             Vector3 positionSpawn = transform.position + new Vector3(posXRdm, 0, 0);
 
             //aparation Boules
-            GameObject NewBoules = Instantiate(prefabBoules, positionSpawn,transform.rotation);
+            GameObject NewBoules = Instantiate(prefabBoules, positionSpawn, transform.rotation);
             //DestructioN Boules 
             Destroy(NewBoules, BoulesDestroy);
         }
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

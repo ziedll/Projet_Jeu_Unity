@@ -19,8 +19,6 @@
       },
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
-<<<<<<< HEAD
     "com.unity.cinemachine": {
       "version": "3.1.7",
       "depth": 0,
@@ -31,10 +29,6 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> 16411fb8dc4dc67bd74288dd17f1770496cad64c
-=======
->>>>>>> origin/scene_level
     "com.unity.collections": {
       "version": "6.5.0",
       "depth": 0,

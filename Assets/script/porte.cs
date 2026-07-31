@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement; // Requis pour la gestion des scènes
 
 public class porte : MonoBehaviour
 {
-    public string SceneName = "Untitled";
+    public string SceneName = "Montagne";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

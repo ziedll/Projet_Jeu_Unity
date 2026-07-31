@@ -8,8 +8,13 @@ public class Colision : MonoBehaviour
     public float delaiAvantRelevement = 0.5f;
 
     [Header("Matériaux (Apparence)")]
-    public Material materialNormal;      // Le matériau classique du joueur
-    public Material materialInvincible;  // Le matériau quand il est invincible (ex: clignotant, doré, transparent...)
+    public Material materialNormal;
+    public Material materialInvincible;
+
+    // --- NOUVEAU : Référence à votre script de vie ---
+    [Header("Système de Vie")]
+    public BarreDeVie scriptVie;
+    // --------------------------------------------------
 
     private Rigidbody rb;
     private Renderer renduJoueur;
@@ -25,11 +30,8 @@ public class Colision : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         scriptDeplacement = GetComponent<DeplacementJoueur>();
-
-        // Récupère le Renderer (le composant qui affiche le matériau/couleur)
         renduJoueur = GetComponent<Renderer>();
 
-        // Si le matériau normal n'est pas assigné dans l'Inspector, on prend celui par défaut
         if (materialNormal == null && renduJoueur != null)
         {
             materialNormal = renduJoueur.material;
@@ -38,7 +40,6 @@ public class Colision : MonoBehaviour
 
     void Update()
     {
-        // 1. Décompte et fin de l'invincibilité
         if (estInvincible)
         {
             chronoInvincible -= Time.deltaTime;
@@ -48,7 +49,6 @@ public class Colision : MonoBehaviour
             }
         }
 
-        // 2. Décompte du délai avant d'autoriser le redressement
         if (estAuSol)
         {
             if (chronoAttenteRelever > 0f)
@@ -76,6 +76,17 @@ public class Colision : MonoBehaviour
         if (collision.gameObject.name.Contains("Boule") || collision.gameObject.CompareTag("Boule"))
         {
             CoucherAuSol();
+
+            // --- NOUVEAU : Enlever un coeur ---
+            if (scriptVie != null)
+            {
+                scriptVie.PrendreDegats();
+            }
+            else
+            {
+                Debug.LogWarning("Le script BarreDeVie n'est pas assigné dans le script Colision !");
+            }
+            // ----------------------------------
         }
     }
 
@@ -99,7 +110,6 @@ public class Colision : MonoBehaviour
     void SeRelever()
     {
         estAuSol = false;
-
         transform.rotation = Quaternion.identity;
         transform.position += new Vector3(0, 0.5f, 0);
 
@@ -109,8 +119,6 @@ public class Colision : MonoBehaviour
         }
 
         if (scriptDeplacement != null) scriptDeplacement.enabled = true;
-
-        // Démarre l'invincibilité et change le Material
         ActiverInvincibilite();
     }
 
@@ -119,7 +127,6 @@ public class Colision : MonoBehaviour
         estInvincible = true;
         chronoInvincible = dureeInvincibilite;
 
-        // Applique le matériau d'invincibilité
         if (renduJoueur != null && materialInvincible != null)
         {
             renduJoueur.material = materialInvincible;
@@ -130,7 +137,6 @@ public class Colision : MonoBehaviour
     {
         estInvincible = false;
 
-        // Remet le matériau normal
         if (renduJoueur != null && materialNormal != null)
         {
             renduJoueur.material = materialNormal;
