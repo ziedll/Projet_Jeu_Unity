@@ -2544,7 +2544,7 @@ GameObject:
   - component: {fileID: 951572630}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2561,14 +2561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbe3807e1c400643a311d6090dbb22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::deplacement
-  vitesse: 6
-  vitesseRotation: 10
-  animator: {fileID: 0}
-  _cameraTransform: {fileID: 0}
-  cameraOffset: {x: 0.18, y: 3.5, z: -8}
-  cameraSmoothSpeed: 5
-  hauteurSaut: 3.5
-  gravite: -9.81
 --- !u!136 &951572619
 CapsuleCollider:
   m_ObjectHideFlags: 0
